@@ -8,7 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const ThanksTop = ({ name, msg, being }) => {
     const navigation = useNavigation();
-
+    console.log(being);
     return (
         <View
             style={[
@@ -36,19 +36,18 @@ const ThanksTop = ({ name, msg, being }) => {
                         height: 30.18,
                         width: 36,
                     }}
-                    source={{ uri: require("../../assets/images/logo.png") }}
+                    source={require("../../assets/images/logo.png")}
+                    // source={{ uri: "../../assets/images/logo.png" }}
                 />
             </Pressable>
-            {being == "invite" ? (
+            {being === "invite" ? (
                 <View>
                     <Image
                         height={264}
                         contentFit="contain"
                         transition={1000}
                         contentPosition={"center"}
-                        source={{
-                            uri: require("../../assets/images/mail.png"),
-                        }}
+                        source={require("../../assets/images/mail.png")}
                         style={{
                             flex: 1,
                             width: "100%",

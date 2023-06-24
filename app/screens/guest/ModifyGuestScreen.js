@@ -19,7 +19,7 @@ const ModifyGuestScreen = ({ route }) => {
     const navigation = useNavigation();
     const [save, setSave] = useState(false);
     const [visible, setVisible] = React.useState(false);
-    const { title, subtitle, name } = route.params;
+    const { title, subtitle, name, email } = route.params;
     const showDialog = () => setVisible(true);
 
     const hideDialog = () => setVisible(false);
@@ -34,6 +34,7 @@ const ModifyGuestScreen = ({ route }) => {
                 />
                 <CustomTextInput
                     label={"Email"}
+                    value={email}
                     icon={"email-outline"}
                     oct={() => {
                         setSave(true);
@@ -59,13 +60,10 @@ const ModifyGuestScreen = ({ route }) => {
                         onDismiss={hideDialog}
                         style={globalStyles.Dialog}
                     >
-                        <Dialog.Title style={{ margin: 0 }}>
-                            <Text
-                                style={[
-                                    globalStyles.h3,
-                                    { textAlign: "center" },
-                                ]}
-                            >
+                        <Dialog.Title
+                            style={{ margin: 0, textAlign: "center" }}
+                        >
+                            <Text style={[globalStyles.h3]}>
                                 Delete Eric Brown
                             </Text>
                         </Dialog.Title>

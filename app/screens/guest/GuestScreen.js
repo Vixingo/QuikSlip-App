@@ -19,7 +19,7 @@ const GuestScreen = ({ route }) => {
 
             key: 1,
         },
-        { name: "Eric Brown", email: "tom@hu.com", key: 2 },
+        { name: "Eric Brown", email: "ericbrrowm@hu.com", key: 2 },
     ];
     const cars = [
         { model: "Honda Civic", plate: "Eric Brown", key: 3 },
@@ -43,7 +43,7 @@ const GuestScreen = ({ route }) => {
                                   mode={"outlined"}
                                   op={() => {
                                       navigation.navigate("modifyGuest", {
-                                          title: "Create Guest Profile",
+                                          title: "Modify Guest Profile",
                                           subtitle:
                                               "Need to update your guest email? Update all the information here.",
                                           name: d.name,
