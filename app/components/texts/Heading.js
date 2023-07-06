@@ -19,7 +19,9 @@ const Heading = ({ title, subtitle, chip }) => {
       }}
     >
       <Text style={globalStyles.h2}>{title}</Text>
-      <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+      <View
+        style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center" }}
+      >
         <Text
           style={[
             {

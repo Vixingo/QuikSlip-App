@@ -10,12 +10,20 @@ import Heading from "../../components/texts/Heading";
 const AddGuestScreen = ({ route }) => {
   const navigation = useNavigation();
   const [guest, setGuest] = useState({ name: "", email: "" });
+  const [car, setCar] = useState({ model: "", plate: "" });
   const [empty, setEmpty] = useState(true);
+  const [allow, setAllow] = useState(true);
   useEffect(() => {
     if (guest.email == "" || guest.name == "") {
       setEmpty(true);
     } else {
       setEmpty(false);
+    }
+
+    if (car.plate == "" || car.model == "") {
+      setAllow(true);
+    } else {
+      setAllow(false);
     }
   });
   const { show, title, subtitle, add } = route.params;
@@ -68,43 +76,39 @@ const AddGuestScreen = ({ route }) => {
         </>
       ) : (
         <>
-          <Heading
+          <Heading2
             title={"Add Vehicle"}
             subtitle={"Add your vehicle with the required info."}
             chip={"See Rules"}
           />
           <View style={{ gap: 40, marginTop: 24 }}>
             <CustomTextInput
-              label={"Name"}
-              icon={"rename-box"}
+              label={"Car Make and Model"}
+              icon={"steering"}
               oct={(e) =>
-                setGuest({
-                  ...guest,
-                  name: e,
+                setCar({
+                  ...car,
+                  model: e,
                 })
               }
             />
             <CustomTextInput
-              label={"Email"}
-              icon={"email-outline"}
-              oct={(e) =>
-                setGuest({
-                  ...guest,
-                  email: e,
-                })
-              }
+              label={"License Plate"}
+              icon={"car"}
+              oct={(e) => {
+                setCar({
+                  ...car,
+                  plate: e,
+                });
+              }}
             />
             <CpButton
-              label={"SEND LINK"}
+              label={"REGISTER VEHICLE"}
               mode={"contained"}
-              disabled={empty}
+              disabled={allow}
               op={() => {
                 console.log("send link ");
-                navigation.navigate("thankYou", {
-                  being: "invite",
-                  name: guest.name,
-                  email: guest.email,
-                });
+                navigation.goBack();
               }}
             />
           </View>
