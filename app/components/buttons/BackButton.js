@@ -7,15 +7,16 @@ import { TouchableOpacity, View } from "react-native";
 import { globalStyles, myTheme } from "../../utils/globalStyle";
 
 export default function BackButton() {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
-    return (
-        <IconButton
-            icon="arrow-left"
-            iconColor={myTheme.color.textColor}
-            onPress={() => {
-                navigation.goBack();
-            }}
-        />
-    );
+  return (
+    <IconButton
+      icon="arrow-left"
+      size={30}
+      iconColor={myTheme.color.textColor}
+      onPress={() => {
+        navigation.goBack();
+      }}
+    />
+  );
 }
