@@ -62,7 +62,7 @@ const TenantReg = ({ tendata, setTendata }) => {
                     }
                     labelStyle={[globalStyles.pill]}
                 >
-                    {!add ? "Add Another Vehicle" : "Remove Vehicle"}
+                    {!add ? "Add Vehicle" : "Remove Vehicle"}
                 </Button>
             </View>
             {add ? (

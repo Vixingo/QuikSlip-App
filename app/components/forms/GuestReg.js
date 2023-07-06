@@ -15,7 +15,15 @@ import CSButton from "../buttons/CSButton";
 import CpButton from "../buttons/CpButton";
 import Heading from "../texts/Heading";
 
-const GuestReg = ({ formData, setFormData, navigation }) => {
+const GuestReg = ({ navigation }) => {
+    const [formdata, setFormdata] = React.useState({
+        name: "",
+        email: "",
+        car: "",
+        license: "",
+        check1: "",
+        check2: "",
+    });
     const [text, setText] = React.useState("");
     const [focus, setFocus] = React.useState(false);
 
@@ -27,6 +35,7 @@ const GuestReg = ({ formData, setFormData, navigation }) => {
                 paddingLeft: 20,
                 paddingRight: 20,
                 paddingBottom: 30,
+                maxWidth: 504
             }}
         >
             <Heading
@@ -53,10 +62,10 @@ const GuestReg = ({ formData, setFormData, navigation }) => {
             <CustomTextInput
                 label="Car Make and Model"
                 icon="steering"
-                value={formData.car}
+                value={formdata.car}
                 oct={(e) =>
-                    setFormData({
-                        ...formData,
+                    setFormdata({
+                        ...formdata,
                         car: e,
                     })
                 }
@@ -64,10 +73,10 @@ const GuestReg = ({ formData, setFormData, navigation }) => {
             <CustomTextInput
                 label="License Plate"
                 icon="car-side"
-                value={formData.license}
+                value={formdata.license}
                 oct={(e) =>
-                    setFormData({
-                        ...formData,
+                    setFormdata({
+                        ...formdata,
                         license: e,
                     })
                 }
@@ -79,10 +88,10 @@ const GuestReg = ({ formData, setFormData, navigation }) => {
             <CustomTextInput
                 label="Name"
                 icon="rename-box"
-                value={formData.name}
+                value={formdata.name}
                 oct={(e) =>
-                    setFormData({
-                        ...formData,
+                    setFormdata({
+                        ...formdata,
                         name: e,
                     })
                 }
@@ -90,10 +99,10 @@ const GuestReg = ({ formData, setFormData, navigation }) => {
             <CustomTextInput
                 label="Email"
                 icon="email-outline"
-                value={formData.email}
+                value={formdata.email}
                 oct={(e) =>
-                    setFormData({
-                        ...formData,
+                    setFormdata({
+                        ...formdata,
                         email: e,
                     })
                 }
@@ -102,16 +111,16 @@ const GuestReg = ({ formData, setFormData, navigation }) => {
             <Text style={globalStyles.h3}>Communication Preference</Text>
             <CustomCheckBox
                 label="I agree to receive a confirmation email"
-                icon={formData.check1 ? "check" : ""}
+                icon={formdata.check1 ? "check" : ""}
                 op={() => {
-                    setFormData({ ...formData, check1: !formData.check1 });
+                    setFormdata({ ...formdata, check1: !formdata.check1 });
                 }}
             />
             <CustomCheckBox
                 label="I agree to receive a notification for an expiring guest pass"
-                icon={formData.check2 ? "check" : ""}
+                icon={formdata.check2 ? "check" : ""}
                 op={() => {
-                    setFormData({ ...formData, check2: !formData.check2 });
+                    setFormdata({ ...formdata, check2: !formdata.check2 });
                 }}
             />
             <CpButton

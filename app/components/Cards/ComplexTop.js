@@ -8,13 +8,13 @@ import { myTheme } from "../../utils/globalStyle";
 const ComplexTop = () => {
     return (
         <ImageBackground
-            style={{ width: "100%", height: 360 }}
+            style={{ width: "100%",borderRadius:8, height: 360 }}
             source={require("../../assets/images/complex_bg.png")}
             resizeMode="cover"
         >
             <LinearGradient
                 colors={["transparent", "rgba(0, 0, 0, 0.7)"]}
-                style={{ width: "100%", height: 360 }}
+                style={{ width: "100%", height: 360, }}
             >
                 <View
                     style={{

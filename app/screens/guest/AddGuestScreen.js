@@ -7,61 +7,69 @@ import CpButton from "../../components/buttons/CpButton";
 import { useNavigation } from "@react-navigation/native";
 
 const AddGuestScreen = ({ route }) => {
-    const navigation = useNavigation();
-    const [guest, setGuest] = useState({ name: "", email: "" });
-    const [empty, setEmpty] = useState(true);
-    useEffect(() => {
-        if (guest.email == "" || guest.name == "") {
-            setEmpty(true);
-        } else {
-            setEmpty(false);
-        }
-    });
-    return (
-        <ProfileLayout>
-            <Heading2
-                title="Create Guest Profile"
-                subtitle={
-                    "Have a common guest that often comes over to your apartment and could use a quick pass?"
-                }
+  const navigation = useNavigation();
+  const [guest, setGuest] = useState({ name: "", email: "" });
+  const [empty, setEmpty] = useState(true);
+  useEffect(() => {
+    if (guest.email == "" || guest.name == "") {
+      setEmpty(true);
+    } else {
+      setEmpty(false);
+    }
+  });
+  const { show, title, subtitle, add } = route.params;
+
+  return (
+    <ProfileLayout>
+      {add === "Guest" ? (
+        <>
+          <Heading2
+            title={`Create Guest Profile`}
+            subtitle={
+              "Have a common guest that often comes over to your apartment and could use a quick pass?"
+            }
+          />
+          <View style={{ gap: 40, marginTop: 24 }}>
+            <CustomTextInput
+              label={"Name"}
+              icon={"rename-box"}
+              oct={(e) =>
+                setGuest({
+                  ...guest,
+                  name: e,
+                })
+              }
             />
-            <View style={{ gap: 40, marginTop: 24 }}>
-                <CustomTextInput
-                    label={"Name"}
-                    icon={"rename-box"}
-                    oct={(e) =>
-                        setGuest({
-                            ...guest,
-                            name: e,
-                        })
-                    }
-                />
-                <CustomTextInput
-                    label={"Email"}
-                    icon={"email-outline"}
-                    oct={(e) =>
-                        setGuest({
-                            ...guest,
-                            email: e,
-                        })
-                    }
-                />
-                <CpButton
-                    label={"SEND LINK"}
-                    mode={"contained"}
-                    disabled={empty}
-                    op={() => {
-                        console.log("send link ");
-                        navigation.navigate("thankYou", {
-                            being: "invite",
-                            name: guest.name,
-                            email: guest.email,
-                        });
-                    }}
-                />
-            </View>
-        </ProfileLayout>
-    );
+            <CustomTextInput
+              label={"Email"}
+              icon={"email-outline"}
+              oct={(e) =>
+                setGuest({
+                  ...guest,
+                  email: e,
+                })
+              }
+            />
+            <CpButton
+              label={"SEND LINK"}
+              mode={"contained"}
+              disabled={empty}
+              op={() => {
+                console.log("send link ");
+                navigation.navigate("thankYou", {
+                  being: "invite",
+                  name: guest.name,
+                  email: guest.email,
+                });
+              }}
+            />
+          </View>
+        </>
+      ) : (
+        <></>
+      )}
+    </ProfileLayout>
+  );
 };
 
 export default AddGuestScreen;

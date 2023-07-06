@@ -3,14 +3,14 @@ import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { IconButton, PaperProvider, Button } from "react-native-paper";
 import {
-    StyleSheet,
-    View,
-    SafeAreaView,
-    Platform,
-    StatusBar,
-    TouchableWithoutFeedback,
-    Keyboard,
-    TouchableOpacity,
+  StyleSheet,
+  View,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+  TouchableWithoutFeedback,
+  Keyboard,
+  TouchableOpacity,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
@@ -41,69 +41,71 @@ import ModifyGuestScreen from "../screens/guest/ModifyGuestScreen";
 import * as SplashScreen from "expo-splash-screen";
 
 import {
-    useFonts,
+  useFonts,
+  Arimo_400Regular,
+  Arimo_500Medium,
+  Arimo_600SemiBold,
+  Arimo_700Bold,
+} from "@expo-google-fonts/arimo";
+import LogoutBar from "./NavBars/LogoutBar";
+function StackNavigator() {
+  SplashScreen.preventAutoHideAsync();
+  const Stack = createNativeStackNavigator();
+  const { user } = useAuth();
+  // const navigation = useNavigation();
+  const [fontsLoaded] = useFonts({
+    Arimo: require("../assets/fonts/Arimo-Regular.ttf"),
     Arimo_400Regular,
     Arimo_500Medium,
     Arimo_600SemiBold,
     Arimo_700Bold,
-} from "@expo-google-fonts/arimo";
-function StackNavigator() {
-    SplashScreen.preventAutoHideAsync();
-    const Stack = createNativeStackNavigator();
-    const { user } = useAuth();
-    // const navigation = useNavigation();
-    const [fontsLoaded] = useFonts({
-        Arimo: require("../assets/fonts/Arimo-Regular.ttf"),
-        Arimo_400Regular,
-        Arimo_500Medium,
-        Arimo_600SemiBold,
-        Arimo_700Bold,
-    });
+  });
 
-    const onLayoutRootView = React.useCallback(async () => {
-        if (fontsLoaded) {
-            await SplashScreen.hideAsync();
-        }
-    }, [fontsLoaded]);
-
-    if (!fontsLoaded) {
-        return null;
+  const onLayoutRootView = React.useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
     }
-    return (
-        <SafeAreaProvider onLayout={onLayoutRootView}>
-            <NavigationContainer>
-                <Stack.Navigator>
-                    {!user ? (
-                        <>
-                            <Stack.Screen
-                                name="home"
-                                component={HomeScreen}
-                                options={{
-                                    title: "Dev Dashboard",
-                                }}
-                            />
+  }, [fontsLoaded]);
 
-                            <Stack.Screen
-                                name="guestPass"
-                                options={{
-                                    title: "",
-                                    headerTransparent: true,
-                                    headerBackTitleVisible: false,
-                                    headerLeft: () => <BackButton />,
-                                }}
-                                component={GuestPassScreen}
-                            />
-                            <Stack.Screen
-                                name="tenant"
-                                options={{
-                                    title: "",
-                                    headerTransparent: true,
-                                    headerBackTitleVisible: false,
-                                    headerLeft: () => <BackButton />,
-                                }}
-                                component={TenantScreen}
-                            />
-                            {/* <Stack.Screen
+  if (!fontsLoaded) {
+    return null;
+  }
+  return (
+    <SafeAreaProvider onLayout={onLayoutRootView}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          {!user ? (
+            <>
+              <Stack.Screen
+                name="home"
+                component={HomeScreen}
+                options={{
+                  title: "Dev Dashboard",
+                }}
+              />
+
+              <Stack.Screen
+                name="guestPass"
+                options={{
+                  title: "",
+                  headerTransparent: true,
+                  headerBackTitleVisible: false,
+                  contentStyle: { backgroundColor: myTheme.color.back },
+                  headerLeft: () => <BackButton />,
+                }}
+                component={GuestPassScreen}
+              />
+              <Stack.Screen
+                name="tenant"
+                options={{
+                  title: "",
+                  headerTransparent: true,
+                  headerBackTitleVisible: false,
+                  headerLeft: () => <BackButton />,
+                }}
+                component={TenantScreen}
+              />
+              {/* <Stack.Screen
                                 name="modify"
                                 options={{
                                     title: "",
@@ -117,186 +119,188 @@ function StackNavigator() {
                                 }}
                                 component={ModifyScreen}
                             /> */}
-                            <Stack.Screen
-                                name="thankYou"
-                                component={ThankScreen}
-                                options={{
-                                    // presentation: "fullScreenModal",
-                                    headerTransparent: true,
-                                    headerShown: false,
-                                }}
-                            />
-                            <Stack.Screen
-                                name="overview"
-                                component={OverviewScreen}
-                                options={{
-                                    title: "",
-                                    headerTransparent: true,
-                                    headerShadowVisible: false,
-                                    headerLeft: () => <BackButton />,
-                                }}
-                            />
-                            <Stack.Screen
-                                name="expired"
-                                component={ExpiredScreen}
-                                options={{
-                                    headerTransparent: true,
-                                    headerShown: false,
-                                }}
-                            />
-                            <Stack.Screen
-                                name="tntDash"
-                                component={TntDashScreen}
-                                options={{
-                                    headerTitle: "",
-                                    headerTransparent: true,
-                                    // headerShown: false,
-                                    // headerLeft: () => <BackButton />,
-                                    // headerBackTitleVisible: false,
-                                    headerBackVisible: false,
+              <Stack.Screen
+                name="thankYou"
+                component={ThankScreen}
+                options={{
+                  // presentation: "fullScreenModal",
+                  headerTransparent: true,
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="overview"
+                component={OverviewScreen}
+                options={{
+                  title: "",
+                  headerTransparent: true,
+                  headerShadowVisible: false,
+                  headerLeft: () => <BackButton />,
+                }}
+              />
+              <Stack.Screen
+                name="expired"
+                component={ExpiredScreen}
+                options={{
+                  headerTransparent: true,
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="tntDash"
+                component={TntDashScreen}
+                options={{
+                  headerTitle: "",
+                  headerTransparent: true,
+                  // headerShown: false,
+                  // headerLeft: () => <BackButton />,
+                  // headerBackTitleVisible: false,
+                  headerBackVisible: false,
 
-                                    headerRight: () => <LogOut />,
-                                }}
-                            />
-                            <Stack.Screen
-                                name="setting"
-                                component={ProfileScreen}
-                                options={{
-                                    headerTitle: "",
-                                    headerTransparent: false,
-                                    headerShadowVisible: false,
-                                    headerStyle: {
-                                        backgroundColor: myTheme.color.back,
-                                    },
+                  headerRight: () => <LogOut />,
+                }}
+              />
+              <Stack.Screen
+                name="setting"
+                component={ProfileScreen}
+                options={{
+                  headerTitle: "",
+                  headerTransparent: false,
+                  headerShadowVisible: false,
+                  headerStyle: {
+                    backgroundColor: myTheme.color.back,
+                  },
 
-                                    headerLeft: () => <BackButton />,
-                                    headerRight: () => <LogOut />,
-                                }}
-                            />
-                            <Stack.Screen
-                                name="userInfo"
-                                component={InfoScreen}
-                                options={{
-                                    headerTitle: "",
-                                    headerTransparent: false,
-                                    headerShadowVisible: false,
-                                    headerStyle: {
-                                        backgroundColor: myTheme.color.back,
-                                    },
-                                    headerLeft: () => <BackButton />,
-                                    headerRight: () => <LogOut />,
-                                }}
-                            />
-                            <Stack.Screen
-                                name="userPass"
-                                component={PassScreen}
-                                options={{
-                                    headerTitle: "",
-                                    headerTransparent: false,
-                                    headerShadowVisible: false,
-                                    headerStyle: {
-                                        backgroundColor: myTheme.color.back,
-                                    },
-                                    headerLeft: () => <BackButton />,
-                                    // headerRight: () => <LogOut />,
-                                }}
-                            />
-                            <Stack.Screen
-                                name="userDelete"
-                                component={DeleteScreen}
-                                options={{
-                                    headerTitle: "",
-                                    headerTransparent: false,
-                                    headerShadowVisible: false,
-                                    headerStyle: {
-                                        backgroundColor: myTheme.color.back,
-                                    },
-                                    headerLeft: () => <BackButton />,
-                                    // headerRight: () => <LogOut />,
-                                }}
-                            />
-                            <Stack.Screen
-                                name="commonGuest"
-                                component={GuestScreen}
-                                options={{
-                                    headerTitle: "",
-                                    headerTransparent: false,
-                                    headerShadowVisible: false,
-                                    headerStyle: {
-                                        backgroundColor: myTheme.color.back,
-                                    },
-                                    headerLeft: () => <BackButton />,
-                                    headerRight: () => <LogOut />,
-                                }}
-                            />
-                            <Stack.Screen
-                                name="userVehicle"
-                                component={VehicleScreen}
-                                options={{
-                                    headerTitle: "",
-                                    headerTransparent: false,
-                                    headerShadowVisible: false,
-                                    headerStyle: {
-                                        backgroundColor: myTheme.color.back,
-                                    },
-                                    headerLeft: () => <BackButton />,
-                                    headerRight: () => <LogOut />,
-                                }}
-                            />
-                            <Stack.Screen
-                                name="modifyGuest"
-                                component={ModifyGuestScreen}
-                                options={{
-                                    headerTitle: "",
-                                    headerTransparent: false,
-                                    headerShadowVisible: false,
-                                    headerStyle: {
-                                        backgroundColor: myTheme.color.back,
-                                    },
-                                    headerLeft: () => <BackButton />,
-                                    headerRight: () => <LogOut />,
-                                }}
-                            />
-                            <Stack.Screen
-                                name="addGuest"
-                                component={AddGuestScreen}
-                                options={{
-                                    headerTitle: "",
-                                    headerTransparent: false,
-                                    headerShadowVisible: false,
-                                    headerStyle: {
-                                        backgroundColor: myTheme.color.back,
-                                    },
-                                    headerLeft: () => <BackButton />,
-                                    headerRight: () => <LogOut />,
-                                }}
-                            />
-                            {/* delete this login in final build */}
-                            <Stack.Screen
-                                name="login"
-                                options={{
-                                    title: "login",
-                                    // headerTransparent: true,
-                                    // headerShadowVisible: false,
-                                }}
-                                component={WelcomeScreen}
-                            />
-                        </>
-                    ) : (
-                        <Stack.Screen
-                            name="login"
-                            options={{
-                                title: "login",
-                                // headerTransparent: true,
-                                // headerShadowVisible: false,
-                            }}
-                            component={WelcomeScreen}
-                        />
-                    )}
-                </Stack.Navigator>
-            </NavigationContainer>
-        </SafeAreaProvider>
-    );
+                  headerLeft: () => <BackButton />,
+                  headerRight: () => <LogOut />,
+                }}
+              />
+              <Stack.Screen
+                name="userInfo"
+                component={InfoScreen}
+                options={{
+                  headerTitle: "",
+                  headerTransparent: false,
+                  headerShadowVisible: false,
+                  headerStyle: {
+                    backgroundColor: myTheme.color.back,
+                  },
+                  headerLeft: () => <BackButton />,
+                  headerRight: () => <LogOut />,
+                }}
+              />
+              <Stack.Screen
+                name="userPass"
+                component={PassScreen}
+                options={{
+                  headerTitle: "",
+                  headerTransparent: false,
+                  headerShadowVisible: false,
+                  headerStyle: {
+                    backgroundColor: myTheme.color.back,
+                  },
+                  headerLeft: () => <BackButton />,
+                  // headerRight: () => <LogOut />,
+                }}
+              />
+              <Stack.Screen
+                name="userDelete"
+                component={DeleteScreen}
+                options={{
+                  headerTitle: "",
+                  headerTransparent: false,
+                  headerShadowVisible: false,
+                  headerStyle: {
+                    backgroundColor: myTheme.color.back,
+                  },
+                  headerLeft: () => <BackButton />,
+                  // headerRight: () => <LogOut />,
+                }}
+              />
+              <Stack.Screen
+                name="commonGuest"
+                component={GuestScreen}
+                options={{
+                  header: (props) => <LogoutBar {...props} />,
+                  //   headerTransparent: true,
+                  headerShadowVisible: true,
+                  headerStyle: {
+                    backgroundColor: myTheme.color.back,
+                  },
+                  // headerLeft: () => <BackButton />,
+                  // headerRight: () => <LogOut />,
+                }}
+              />
+              <Stack.Screen
+                name="userVehicle"
+                component={VehicleScreen}
+                options={{
+                  headerTitle: "",
+                  headerTransparent: false,
+                  headerShadowVisible: false,
+
+                  headerStyle: {
+                    backgroundColor: myTheme.color.back,
+                  },
+
+                  headerLeft: () => <BackButton />,
+                  headerRight: () => <LogOut />,
+                }}
+              />
+              <Stack.Screen
+                name="modifyGuest"
+                component={ModifyGuestScreen}
+                options={{
+                  headerTitle: "",
+                  headerTransparent: false,
+                  headerShadowVisible: false,
+                  headerStyle: {
+                    backgroundColor: myTheme.color.back,
+                  },
+                  headerLeft: () => <BackButton />,
+                  headerRight: () => <LogOut />,
+                }}
+              />
+              <Stack.Screen
+                name="addGuest"
+                component={AddGuestScreen}
+                options={{
+                  headerTitle: "",
+                  headerTransparent: false,
+                  headerShadowVisible: false,
+                  headerStyle: {
+                    backgroundColor: myTheme.color.back,
+                  },
+                  headerLeft: () => <BackButton />,
+                  headerRight: () => <LogOut />,
+                }}
+              />
+              {/* delete this login in final build */}
+              <Stack.Screen
+                name="login"
+                options={{
+                  title: "login",
+                  // headerTransparent: true,
+                  // headerShadowVisible: false,
+                }}
+                component={WelcomeScreen}
+              />
+            </>
+          ) : (
+            <Stack.Screen
+              name="login"
+              options={{
+                title: "login",
+                // headerTransparent: true,
+                // headerShadowVisible: false,
+              }}
+              component={WelcomeScreen}
+            />
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
 }
 
 export default StackNavigator;

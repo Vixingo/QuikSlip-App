@@ -9,11 +9,14 @@ function HomeScreen({ navigation }) {
         <View
             style={{
                 flex: 1,
-                justifyContent: "flex-start",
+                alignSelf:'center',
                 gap: 4,
-                paddingLeft: 20,
-                paddingRight: 20,
+                // paddingLeft:'',
+                // paddingRight: 20,
                 marginTop: 20,
+                maxWidth:1024,
+
+                
             }}
         >
             <CpButton

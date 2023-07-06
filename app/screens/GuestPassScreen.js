@@ -10,14 +10,7 @@ import GuestReg from "../components/forms/GuestReg";
 import { globalStyles } from "../utils/globalStyle.js";
 import ComplexTop from "../components/Cards/ComplexTop";
 function GuestPassScreen({ navigation }) {
-    const [formdata, setFormdata] = React.useState({
-        name: "",
-        email: "",
-        car: "",
-        license: "",
-        check1: "",
-        check2: "",
-    });
+   
     return (
         <>
             <ScrollView>
@@ -30,14 +23,12 @@ function GuestPassScreen({ navigation }) {
                         <View
                             style={{
                                 flex: 1,
-                                backgroundColor: "#f5f5f5",
+                                // backgroundColor: "#f5f5f5",
                                 gap: 16,
                             }}
                         >
                             <ComplexTop />
-                            <GuestReg
-                                formData={formdata}
-                                setFormData={setFormdata}
+                            <GuestReg        
                                 navigation={navigation}
                             />
                         </View>

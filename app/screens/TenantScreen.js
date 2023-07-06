@@ -32,7 +32,7 @@ const TenantScreen = () => {
                     <View
                         style={{
                             flex: 1,
-                            backgroundColor: "#f5f5f5",
+                            // backgroundColor: "#f5f5f5",
                             gap: 16,
                         }}
                     >
