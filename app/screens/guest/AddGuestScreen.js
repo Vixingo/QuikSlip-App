@@ -5,6 +5,7 @@ import Heading2 from "../../components/texts/Heading2";
 import CustomTextInput from "../../components/forms/CustomTextInput";
 import CpButton from "../../components/buttons/CpButton";
 import { useNavigation } from "@react-navigation/native";
+import Heading from "../../components/texts/Heading";
 
 const AddGuestScreen = ({ route }) => {
   const navigation = useNavigation();
@@ -66,7 +67,48 @@ const AddGuestScreen = ({ route }) => {
           </View>
         </>
       ) : (
-        <></>
+        <>
+          <Heading
+            title={"Add Vehicle"}
+            subtitle={"Add your vehicle with the required info."}
+            chip={"See Rules"}
+          />
+          <View style={{ gap: 40, marginTop: 24 }}>
+            <CustomTextInput
+              label={"Name"}
+              icon={"rename-box"}
+              oct={(e) =>
+                setGuest({
+                  ...guest,
+                  name: e,
+                })
+              }
+            />
+            <CustomTextInput
+              label={"Email"}
+              icon={"email-outline"}
+              oct={(e) =>
+                setGuest({
+                  ...guest,
+                  email: e,
+                })
+              }
+            />
+            <CpButton
+              label={"SEND LINK"}
+              mode={"contained"}
+              disabled={empty}
+              op={() => {
+                console.log("send link ");
+                navigation.navigate("thankYou", {
+                  being: "invite",
+                  name: guest.name,
+                  email: guest.email,
+                });
+              }}
+            />
+          </View>
+        </>
       )}
     </ProfileLayout>
   );
