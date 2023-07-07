@@ -86,7 +86,7 @@ const OrderDetails = () => {
                         mode={"outlined"}
                         label={"Add to Wallet"}
                         op={() => {
-                            console.log("cbt2");
+                            console.log("add wallet");
                         }}
                     />
                 </View>

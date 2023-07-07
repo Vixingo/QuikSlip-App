@@ -33,9 +33,9 @@ const GuestReg = ({ navigation }) => {
             setreg(true);
         } else if (formdata.license.length == 0) {
             setreg(true);
-        } else if (formdata.check1.length == 0) {
+        } else if (!formdata.check1) {
             setreg(true);
-        } else if (formdata.check2.length == 0) {
+        } else if (!formdata.check2) {
             setreg(true);
         } else {
             setreg(false);

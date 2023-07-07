@@ -26,7 +26,7 @@ const ThankScreen = ({ navigation, route }) => {
     const insets = useSafeAreaInsets();
     /* 2. Get the param */
     const { being, name, email, msg } = route.params;
-    console.log("from ts", being, name, email, msg);
+    // console.log("from thanks screen", route);
     return (
         <>
             <ScrollView>
