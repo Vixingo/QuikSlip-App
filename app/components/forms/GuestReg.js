@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Chip,
     Button,
@@ -24,10 +24,29 @@ const GuestReg = ({ navigation }) => {
         check1: "",
         check2: "",
     });
+    useEffect(() => {
+        if (formdata.name.length == 0) {
+            setreg(true);
+        } else if (formdata.email.length == 0) {
+            setreg(true);
+        } else if (formdata.car.length == 0) {
+            setreg(true);
+        } else if (formdata.license.length == 0) {
+            setreg(true);
+        } else if (formdata.check1.length == 0) {
+            setreg(true);
+        } else if (formdata.check2.length == 0) {
+            setreg(true);
+        } else {
+            setreg(false);
+        }
+    });
+    const [regnow, setreg] = React.useState(true);
     const [text, setText] = React.useState("");
     const [focus, setFocus] = React.useState(false);
 
     const [checked, setChecked] = React.useState(false);
+
     return (
         <View
             style={{
@@ -35,7 +54,7 @@ const GuestReg = ({ navigation }) => {
                 paddingLeft: 20,
                 paddingRight: 20,
                 paddingBottom: 30,
-                maxWidth: 504
+                maxWidth: 504,
             }}
         >
             <Heading
@@ -126,6 +145,7 @@ const GuestReg = ({ navigation }) => {
             <CpButton
                 mode="contained"
                 label={"REGISTER VEHICLE"}
+                disabled={regnow}
                 op={() => {
                     // console.log(formData);
                     navigation.navigate("thankYou", {
