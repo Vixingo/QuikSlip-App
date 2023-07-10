@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.js": "/static/js/main.92c11e84.js",
+    "static/js/150.2302915f.js": "/static/js/150.2302915f.js",
+    "static/media/MaterialCommunityIcons.ttf": "/static/media/MaterialCommunityIcons.5d42b4e60858731e7b65.ttf",
+    "static/media/Arimo_600SemiBold_Italic.ttf": "/static/media/Arimo_600SemiBold_Italic.c986b76d306d99f76944.ttf",
+    "static/media/Arimo_500Medium_Italic.ttf": "/static/media/Arimo_500Medium_Italic.d06da4f9db29e6998cf1.ttf",
+    "static/media/Arimo_700Bold_Italic.ttf": "/static/media/Arimo_700Bold_Italic.e97cd3348e7000c2097b.ttf",
+    "static/media/Arimo_400Regular_Italic.ttf": "/static/media/Arimo_400Regular_Italic.ab6b623495b609bd56de.ttf",
+    "static/media/Arimo_600SemiBold.ttf": "/static/media/Arimo_600SemiBold.52ed1c1bf311c30047f0.ttf",
+    "static/media/Arimo_500Medium.ttf": "/static/media/Arimo_500Medium.44815c6a008231d7e3c7.ttf",
+    "static/media/Arimo_700Bold.ttf": "/static/media/Arimo_700Bold.0d851fd1b871ce9db682.ttf",
+    "static/media/Arimo-Regular.ttf": "/static/media/Arimo-Regular.ae89d5b5729d2e56f67a.ttf",
+    "static/media/Arimo_400Regular.ttf": "/static/media/Arimo_400Regular.1cf0b4b82d33c336e682.ttf",
+    "static/media/Ionicons.ttf": "/static/media/Ionicons.3517aeaa34b2f8cd8eef.ttf",
+    "static/media/complex_bg.png": "/static/media/complex_bg.bd5d3e87af68c7555fe2.png",
+    "static/media/AntDesign.ttf": "/static/media/AntDesign.163adab9dbd7cb1ed12a.ttf",
+    "static/media/dude.png": "/static/media/dude.fb9b3c6e4b4073919bd9.png",
+    "favicon.ico": "/favicon.ico",
+    "static/media/mail.png": "/static/media/mail.24d472f45e75181c23f3.png",
+    "static/media/logo.png": "/static/media/logo.52ae7fd5e45ec0aabef3.png",
+    "index.html": "/index.html",
+    "favicon-32.png": "/favicon-32.png",
+    "favicon-16.png": "/favicon-16.png",
+    "serve.json": "/serve.json",
+    "manifest.json": "/manifest.json",
+    "main.92c11e84.js.map": "/static/js/main.92c11e84.js.map",
+    "150.2302915f.js.map": "/static/js/150.2302915f.js.map"
+  },
+  "entrypoints": [
+    "static/js/150.2302915f.js",
+    "static/js/main.92c11e84.js"
+  ]
+}
