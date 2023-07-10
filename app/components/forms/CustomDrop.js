@@ -50,16 +50,32 @@ const CustomDrop = () => {
                 }}
                 itemTextStyle={{
                     color: myTheme.color.primary,
-                    fontWeight: 500,
+                    fontWeight: 400,
+                    marginVertical: 0,
+                    padding: 0,
+                    marginBottom: 0,
+                    paddingTop: 0,
+                    backgroundColor: myTheme.color.red,
+                }}
+                itemContainerStyle={{
+                    backgroundColor: "green",
+                    padding: 0,
+                    paddingTop: 0,
+                    paddingVertical: 0,
+                    margin: 0,
+                    marginTop: 0,
+                    marginVertical: 0,
+                    gap: 0,
+                    justifyContent: "center",
                 }}
                 placeholderStyle={styles.placeholderStyle}
                 selectedTextStyle={styles.selectedTextStyle}
                 inputSearchStyle={styles.inputSearchStyle}
                 iconStyle={styles.iconStyle}
                 data={data}
-                // search
+                search
                 dropdownPosition="top"
-                maxHeight={140}
+                maxHeight={180}
                 labelField="label"
                 valueField="value"
                 placeholder={!isFocus ? "Apartment" : "..."}
@@ -98,7 +114,7 @@ const styles = StyleSheet.create({
         paddingTop: 8,
     },
     dropdown: {
-        height: 40,
+        // height: 40,
         borderColor: myTheme.color.primary,
         borderRadius: 8,
         backgroundColor: myTheme.color.white,
@@ -115,7 +131,7 @@ const styles = StyleSheet.create({
         left: 10,
         top: 0,
         zIndex: 999,
-        paddingHorizontal: 8,
+        paddingHorizontal: 6,
         fontSize: 12,
         borderRadius: 8,
         backgroundColor: myTheme.color.back,
